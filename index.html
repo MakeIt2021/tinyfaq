@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta http-equiv="x-ua-compatible" content="ie=edge" />
+  <title>Telegram FAQ</title>
+  <!-- MDB icon -->
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Telegram_2019_Logo.svg/800px-Telegram_2019_Logo.svg.png" type="image/x-icon" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <!-- Google Fonts Roboto -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+  <!-- MDB -->
+  <!-- Custom scripts -->
+
+  <link rel="stylesheet" href="css/mdb.min.css" />
+  <link rel="stylesheet" href="my.css">
+</head>
+
+<body>
+<!-- Start your project here-->
+<nav class="navbar navbar-light bg-light">
+  <div class="container">
+    <a class="navbar-brand">Telegram FAQ на русском</a>
+    <form class="d-flex input-group w-auto">
+      <input
+              type="search"
+              class="form-control rounded"
+              placeholder="Поиск"
+              aria-label="Search"
+              aria-describedby="search-addon"
+      />
+      <span class="input-group-text border-0" id="search-addon">
+      <i class="fas fa-search"></i>
+    </span>
+    </form>
+  </div>
+</nav>
+<div class="container mt-5">
+  <h1>Telegram FAQ for the Technically Inclined</h1>
+  <div class="note mb-3">
+    Этот FAQ о <a href="http://core.telegram.org/mtproto" target="_blank">MTProto</a> предназначен для опытных пользователей. Вы также можете ознакомиться с нашими
+    <a href="http://telegram.org/faq" target="_blank">основными часто задаваемыми вопросами</a>.
+    Обратите внимание, что разработчики клиентов обязаны соблюдать <a href="https://core.telegram.org/mtproto/security_guidelines" target="_blank">Правила безопасности</a>.
+  </div>
+  <hr class="hr"/>
+  <section class="container mt-4">
+    <h3>Общие вопросы</h3>
+    <section id="q1">
+      <h5 class="mt-4"><a href="#q1"><i class="icon fa-solid fa-link"></i></a> Почему вы выбрали собственный протокол?</h5>
+      <p>Чтобы добиться надежности при слабом мобильном соединении, а также скорости при работе с большими файлами (такими как фотографии, большие видео и файлы <strong>размером до 2 ГБ</strong> каждый), MTProto использует свой собственный подход. Этот документ предназначен для разъяснения некоторых деталей , а также для рассмотрения некоторых важных моментов, которые могут быть упущены из виду на первый взгляд.</p>
+    </section>
+    <section class="mt-5" id="q2">
+      <h5 class="mt-4"><a href="#q2"><i class="icon fa-solid fa-link"></i></a> Где я могу прочитать больше о протоколе?</h5>
+      <p>Подробная документация по протоколу доступна <a href="https://core.telegram.org/mtproto" target="_blank">здесь</a>. Обратите внимание, что MTProto поддерживает два уровня шифрования: <strong>клиент-серверное</strong>, которое используется в облачных чатах Telegram, и <strong>сквозное</strong>, которое используется в секретных чатах Telegram. Смотрите ниже для получения дополнительной информации.</p>
+      <p>Если у вас есть какие-либо комментарии, не стесняйтесь обращаться к <a href="mailto:security@telegram.org" target="_blank">security@telegram.org</a></p>
+    </section>
+    <section class="mt-5" id="q3">
+      <h5 class="mt-4"><a href="#q3"><i class="icon fa-solid fa-link"></i></a> Как работает клиент-серверное шифрование в MTProto?</h5>
+      <p><strong>Клиент-серверное шифрование</strong> используется в <strong>Облачных чатах</strong> Telegram. Вот краткий обзор:</p>
+      <img src="https://core.telegram.org/file/811140746/2/CzMyJPVnPo8.81605/c2310d6ede1a5e220f" class="img-fluid mx-auto d-block w-50" alt="MTProto" id="image"/>
+      <h5 class="small" id="q4"><a href="#q4"><i class="icon fa-solid fa-link"></i></a> <strong>Примечание 1</strong></h5>
+      <p class="small">Каждое незашифрованное сообщение, подлежащее шифрованию в MTProto, всегда содержит следующие данные, которые необходимо проверить при расшифровке, чтобы сделать систему устойчивой к известным проблемам с компонентами:</p>
+      <ul class="small">
+        <li>server salt (64-разрядная версия)</li>
+        <li>идентификатор сессии</li>
+        <li>порядковый номер сообщения</li>
+        <li>длина сообщения</li>
+        <li>время</li>
+      </ul>
+      <h5 class="small mt-4" id="q5"><a href="#q5"><i class="icon fa-solid fa-link"></i></a> <strong>Примечание 2</strong></h5>
+      <p class="small">См. дополнительные комментарии об использовании <a href="https://core.telegram.org/techfaq#q-do-you-use-ige-ige-is-broken" target="_blank">IGE</a> и <a href="https://core.telegram.org/techfaq#q-how-are-mtproto-messages-authenticated" target="_blank">аутентификации сообщений</a>.</p>
+      <h5 class="small mt-4" id="q6"><a href="#q6"><i class="icon fa-solid fa-link"></i></a> <strong>Примечание 3</strong></h5>
+      <p class="small">Секретные чаты Telegram со <strong>сквозным</strong> шифрованием используют дополнительный уровень шифрования поверх описанного выше.</p>
+
+    </section>
+    <section class="mt-5" id="q7">
+      <h5 class="mt-4"><a href="#q7"><i class="icon fa-solid fa-link"></i></a> Как работает сквозное шифрование в MTProto?</h5>
+      <p><strong>Сквозное шифрование</strong> используется в <strong>секретных чатах</strong> Telegram, а также при голосовых и видеозвонках. Подробнее об этом можно прочитать здесь: <a href="https://core.telegram.org/api/end-to-end" target="_blank">Секретные чаты, Сквозное шифрование</a>. Вот краткий обзор:</p>
+      <img src="https://core.telegram.org/file/811140633/4/hHw6Zy2DPyQ.109500/cabc10049a7190694f" class="img-fluid mx-auto d-block w-50" alt="MTProto" id="image2"/>
+      <p>Подробнее в этих статьях:</p>
+      <ul>
+        <li><a href="https://core.telegram.org/api/end-to-end" target="_blank">Секретные чаты, сквозное шифрование</a></li>
+        <li><a href="https://core.telegram.org/schema/end-to-end" target="_blank">Сквозная схема TL</a></li>
+        <li><a href="https://core.telegram.org/api/end-to-end/seq_no" target="_blank">Порядковые номера в секретных чатах</a></li>
+        <li><a href="https://core.telegram.org/api/pfs" target="_blank">Идеальная прямая секретность</a></li>
+        <li><a href="https://core.telegram.org/api/end-to-end/voice-calls" target="_blank">Сквозное шифрование голосовых вызовов</a></li>
+      </ul>
+    </section>
+    <section class="mt-5" id="q8">
+      <h5 class="mt-4"><a href="#q8"><i class="icon fa-solid fa-link"></i></a> Почему вы не используете X?</h5>
+      <p>Хотя, несомненно, существуют и другие способы достижения тех же криптографических целей, мы считаем, что настоящее решение является надежным и успешно справляется с нашей второстепенной задачей — превзойти незашифрованные мессенджеры с точки зрения времени доставки и стабильности.</p>
+    </section>
+    <section class="mt-5" id="q9">
+      <h5 class="mt-4"><a href="#q9"><i class="icon fa-solid fa-link"></i></a> Почему вы в основном полагаетесь на классические криптоалгоритмы?</h5>
+      <p>Мы предпочитаем использовать хорошо известные алгоритмы, созданные в те дни, когда пропускная способность и вычислительная мощность были гораздо более редким товаром. Это имеет ценные побочные эффекты для современной мобильной разработки и отправки больших файлов, при условии, что вы позаботитесь об известных недостатках.</p>
+      <p>Слабые стороны таких алгоритмов также хорошо известны и используются десятилетиями. Мы используем эти алгоритмы в такой комбинации, которая, насколько нам известно, предотвращает любые известные атаки.</p>
+    </section>
+    <section class="mt-5" id="q10">
+      <h5 class="mt-4"><a href="#q10"><i class="icon fa-solid fa-link"></i></a> Я эксперт по безопасности, и у меня есть замечания.</h5>
+      <p>Telegram приглашает разработчиков и сообщество исследователей безопасности провести аудит своих сервисов, <a
+              href="https://telegram.org/apps#source-code">кода</a> и <a href="https://core.telegram.org/mtproto" target="_blank">протоколов</a> в поисках уязвимостей или проблем, связанных с безопасностью. Ознакомьтесь с нашей официальной
+        <a href="https://core.telegram.org/bug-bounty" target="_blank">программой Bug Bounty</a>, чтобы узнать, как вы можете сообщить о своих находках.</p>
+      <p>Обратите внимание, что мы не можем предлагать вознаграждения за проблемы, которые становятся достоянием общественности до того, как они будут решены.</p>
+    </section>
+  </section>
+</div>
+<!-- End your project here-->
+
+<!-- MDB -->
+<script type="text/javascript" src="js/mdb.min.js"></script>
+
+<script type="text/javascript">
+  let img = document.getElementById("image")
+  let img2 = document.getElementById("image2")
+  if (window.innerWidth < 768) {
+    img.classList.add("w-100")
+    img.classList.remove("w-50")
+    img2.classList.add("w-100")
+    img2.classList.remove("w-50")
+  }
+</script>
+</body>
+
+</html>
